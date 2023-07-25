@@ -221,7 +221,8 @@ function deleteUser(e){
   const userRef = dbRef.child(`users/${userID}`);
   userRef.remove();
 
-
+  container.textContent = '';
+  load();
 }
 
 
@@ -236,7 +237,10 @@ userRef.on("child_added", function(snap){
   
   let $li = document.createElement("li");
   let $delBtn = document.createElement("button");
+  $delBtn.className = "btn btn-danger";
   let $editBtn = document.createElement("button");
+  $editBtn.className = "btn btn-warning";
+
 
   $delBtn.innerHTML = "Delete";
   $delBtn.setAttribute("child-key", snap.key);
