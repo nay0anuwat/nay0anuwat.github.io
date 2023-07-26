@@ -99,8 +99,6 @@ input{
 	</div>
   </div>
   
-
-
 	
 	<div id="wrapper">
 		<h1>Collection Data</h1>
@@ -212,9 +210,7 @@ function addUser(e){
 }
 
 
-
 // Delete User
-
 function deleteUser(e){
   e.preventDefault();
   e.stopPropagation();
@@ -226,7 +222,13 @@ function deleteUser(e){
   container.textContent = '';
   load();
 }
+setInterval(prelaod, 3000);
 
+function prelaod(){
+
+    container.textContent = '';
+    load();
+}
 
 function load(){
   
