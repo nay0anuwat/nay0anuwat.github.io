@@ -11,8 +11,8 @@
 <body>
 
 <div class="jumbotron text-center">
-  <h1>My First Bootstrap Page</h1>
-  <p>Resize this responsive page to see the effect!</p> 
+  <h1>Nay 😎</h1>
+
 </div>
   
 <div class="container">
