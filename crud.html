@@ -205,8 +205,8 @@ function addUser(e){
   }
   userRef.push(newUser);
 
-  container.textContent = '';
-  load();
+container.textContent = '';
+ load();
 }
 
 
@@ -218,14 +218,13 @@ function deleteUser(e){
   var userID = e.target.getAttribute('child-key');
   const userRef = dbRef.child(`users/${userID}`);
   userRef.remove();
-
   container.textContent = '';
-  load();
+ load();
+
 }
-setInterval(prelaod, 3000);
+setInterval(prelaod, 10000);
 
 function prelaod(){
-
     container.textContent = '';
     load();
 }
