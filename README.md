@@ -136,13 +136,12 @@ input{
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-
 const dbRef = firebase.database().ref();
 const userRef = dbRef.child('users');
 const container = document.getElementById("container");
 
 userRef.on("child_added", function(snap){
-  let user = snap.val();   // single obj stored in "user"
+  let user = snap.val();  
   
   let $li = document.createElement("li");
   let $delBtn = document.createElement("button");
@@ -159,7 +158,7 @@ userRef.on("child_added", function(snap){
   $editBtn.addEventListener("click", editUser);
   
   
-  $li.innerHTML = user.name;    // user.name == "bingo" or "hey"
+  $li.innerHTML = user.name;   
   $li.setAttribute("child-key", snap.key);
   $li.addEventListener("click", userClicked);
   
@@ -207,6 +206,9 @@ function addUser(e){
     newUser[key] = value;
   }
   userRef.push(newUser);
+
+  container.textContent = '';
+  load();
 }
 
 
