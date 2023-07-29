@@ -75,7 +75,7 @@ input{
 		  <form action="#" id="addForm">
 			<input type="text" class="user-input" data-key="name" placeholder="type name here" id="text1"><br>
 
-			<input type="text" class="user-input" data-key="age" placeholder="type data here" id="text2"><br>
+			<input type="text" class="user-input" data-key="data" placeholder="type data here" id="text2"><br>
 			<button type="submit" class="btn btn-success">Insert data</button>
 		 </form>
 		</div>
@@ -90,7 +90,7 @@ input{
 			<input type="hidden" id="edit-userid">
 			<input type="text" class="edit-user-input" data-key="name" placeholder="type name here" ><br>
 
-			<input type="text" class="edit-user-input" data-key="age" placeholder="type data here"><br>
+			<input type="text" class="edit-user-input" data-key="data" placeholder="type data here"><br>
 			<button type="submit" id="saveUser" class="btn btn-warning">Edit data</button>
 		 </form>
 	 
@@ -135,7 +135,7 @@ input{
   firebase.initializeApp(firebaseConfig);
 
 const dbRef = firebase.database().ref();
-const userRef = dbRef.child('users');
+const userRef = dbRef.child('users/person');
 const container = document.getElementById("container");
 
 userRef.on("child_added", function(snap){
@@ -163,13 +163,29 @@ userRef.on("child_added", function(snap){
   container.append($li);
   $li.append($delBtn);
   $li.append($editBtn);
+
+  firstload();
 });
+
+var statx;
+
+function firstload(){
+  const dbRef = firebase.database().ref();
+const userRef = dbRef.child('users/stat');
+const container = document.getElementById("container");
+userRef.on("child_added", function(snap){
+statx = snap.val();   // single obj stored in "user"
+  console.log(statx)
+});
+
+}
+
 
 function userClicked(e){
   e.preventDefault();
   
   var userID = e.target.getAttribute("child-key");
-  const userRef = dbRef.child(`users/${userID}`);
+  const userRef = dbRef.child(`users/person/${userID}`);
   
   const userDetail = document.getElementById("user-detail");
   userDetail.innerHTML = "";   // empty old data
@@ -184,14 +200,14 @@ function userClicked(e){
 
 
 // add-Users in DataBase
-
+var timestamp;
 var form = document.getElementById("addForm");
 form.addEventListener("submit", addUser);
 
 function addUser(e){
   e.preventDefault();
   
-  const  userRef = dbRef.child('users');
+  const  userRef = dbRef.child('users/person');
   var userInput = document.getElementsByClassName('user-input');
   
   let newUser = {};   // empty obj to store data in it before pushing it to Database
@@ -205,9 +221,34 @@ function addUser(e){
   }
   userRef.push(newUser);
 
-container.textContent = '';
- load();
+//container.textContent = '';
+
+updatestamp();
+
 }
+
+
+function updatestamp(){
+  timestamp= Date.now();
+const userRef2 = dbRef.child(`users/stat/data`);
+userRef2.remove();
+console.log(timestamp);
+  const  userRef = dbRef.child('users/stat');
+  var userInput = Date.now();
+  
+  let newUser = {};   // empty obj to store data in it before pushing it to Database
+    // we run loop to get all input keys and value.
+    let key = 'data';
+    let value = userInput;
+    
+    newUser[key] = value;
+
+  userRef.push(newUser);
+
+}
+
+
+
 
 
 // Delete User
@@ -216,34 +257,52 @@ function deleteUser(e){
   e.stopPropagation();
   
   var userID = e.target.getAttribute('child-key');
-  const userRef = dbRef.child(`users/${userID}`);
+  const userRef = dbRef.child(`users/person/${userID}`);
   userRef.remove();
   container.textContent = '';
- load();
+load();
 
 }
 setInterval(prelaod, 10000);
 
 function prelaod(){
-    container.textContent = '';
-    load();
+aa();
+if ( statx == datax){
+}else{
+container.textContent = '';
+load();
+
 }
 
-function load(){
-  
-  const dbRef = firebase.database().ref();
-const userRef = dbRef.child('users');
-const container = document.getElementById("container");
 
+
+}
+var datax
+function aa(){
+  const dbRef = firebase.database().ref();
+const userRef = dbRef.child('users/stat');
+const container = document.getElementById("container");
+userRef.on("child_added", function(snap){
+datax = snap.val();   // single obj stored in "user"
+
+});
+}
+
+
+
+
+
+function load(){
+const dbRef = firebase.database().ref();
+const userRef = dbRef.child('users/person');
+const container = document.getElementById("container");
 userRef.on("child_added", function(snap){
   let user = snap.val();   // single obj stored in "user"
-  
   let $li = document.createElement("li");
   let $delBtn = document.createElement("button");
   $delBtn.className = "btn btn-danger";
   let $editBtn = document.createElement("button");
   $editBtn.className = "btn btn-warning";
-
 
   $delBtn.innerHTML = "Delete";
   $delBtn.setAttribute("child-key", snap.key);
@@ -259,6 +318,7 @@ userRef.on("child_added", function(snap){
   $li.addEventListener("click", userClicked);
   
   container.append($li);
+  console.log(container.count);
   $li.append($delBtn);
   $li.append($editBtn);
 });
@@ -271,13 +331,11 @@ function editUser(e){
 
 	console.log(e.target.getAttribute('child-key'));
 
-
-
   e.preventDefault();
   e.stopPropagation();
   
   document.getElementById('edit-userid').value = e.target.getAttribute("child-key"); 
-  var userRef = dbRef.child("users/" + e.target.getAttribute("child-key"));
+  var userRef = dbRef.child("users/person/" + e.target.getAttribute("child-key"));
   
   var editInput = document.getElementsByClassName("edit-user-input");
   
@@ -299,7 +357,7 @@ function saveUser(e){
   e.stopPropagation();
   
   const userID = document.getElementById("edit-userid").value;
-  const userRef = dbRef.child("users/"+userID);
+  const userRef = dbRef.child("users/person/"+userID);
   const editInput  = document.querySelectorAll(".edit-user-input");
   var editedObject = {};
 
