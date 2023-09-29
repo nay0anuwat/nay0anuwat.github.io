@@ -15,10 +15,11 @@
     <div class="jumbotron text-center">
         <h1>Select datasheet</h1><br>
         <p>
-            <button id="loadFileButton" class="btn btn-outline-dark" onclick="btn1()">Data1</button>
-            <button id="loadFileButton2" class="btn btn-outline-dark" onclick="btn2()">Data2</button>
-            <button id="loadFileButton3" class="btn btn-outline-dark" onclick="btn3()">Data3</button>
-
+            <button id="loadFileButton" class="btn btn-outline-dark" onclick="btn_click('data1')">ASP.net</button>
+            <button id="loadFileButton2" class="btn btn-outline-dark" onclick="btn_click('data2')">VB.net</button>
+            <button id="loadFileButton3" class="btn btn-outline-dark" onclick="btn_click('data3')">Python</button>
+            <button id="loadFileButton4" class="btn btn-outline-dark" onclick="btn_click('data4')">Ionic</button>
+            <button id="loadFileButton5" class="btn btn-outline-dark" onclick="btn_click('data5')">Javascript</button>
         </p> 
       </div>
         
@@ -29,13 +30,53 @@
       
 
 
-
-
     <script>
+//btn id
+var btn1_name = "loadFileButton";
+var btn2_name = "loadFileButton2";
+var btn3_name = "loadFileButton3";
+var btn4_name = "loadFileButton4";
+var btn5_name = "loadFileButton5";
 
-function btn1(){
-    document.getElementById("loadFileButton").addEventListener("click", function () {
-            const fileUrl = 'https://www.w3.org/TR/2003/REC-PNG-20031110/iso_8859-1.txt'; // Replace with the actual URL of your text file
+//btn path
+var path1 = "https://raw.githubusercontent.com/nay0anuwat/nay0anuwat.github.io/main/Datasheet/aspx.net.txt";
+var path2 = "https://raw.githubusercontent.com/nay0anuwat/nay0anuwat.github.io/main/Datasheet/vb.net.txt";
+var path3 = "https://raw.githubusercontent.com/nay0anuwat/nay0anuwat.github.io/main/Datasheet/python.txt";
+var path4 = "https://raw.githubusercontent.com/nay0anuwat/nay0anuwat.github.io/main/Datasheet/ionic.txt";
+var path5 = "https://raw.githubusercontent.com/nay0anuwat/nay0anuwat.github.io/main/Datasheet/javascript.txt";
+
+
+var x;
+var y;
+
+function btn_click(data){
+if(data == 'data1'){
+    x = btn1_name;
+    y = path1;
+    load();
+}else if(data == 'data2'){
+    x = btn2_name;
+    y = path2;
+    load();
+}else if(data == 'data3'){
+    x = btn3_name;
+    y = path3;
+    load();
+}else if(data == 'data4'){
+    x = btn4_name;
+    y = path4;
+    load();
+}else if(data == 'data5'){
+    x = btn5_name;
+    y = path5;
+    load();
+}
+
+}
+
+function load(){
+    document.getElementById(x).addEventListener("click", function () {
+        const fileUrl = y;
             fetch(fileUrl)
                 .then(response => {
                     if (!response.ok) {
@@ -51,47 +92,6 @@ function btn1(){
                 });
         });
 }
-function btn2(){
-    document.getElementById("loadFileButton2").addEventListener("click", function () {
-            const fileUrl = 'https://raw.githubusercontent.com/itsfoss/text-files/master/sample_log_file.txt'; // Replace with the actual URL of your text file
-            fetch(fileUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById("fileContent").textContent = data;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        });
-}
-function btn3(){
-    document.getElementById("loadFileButton3").addEventListener("click", function () {
-            const fileUrl = 'https://raw.githubusercontent.com/itsfoss/text-files/master/agatha_complete.txt'; // Replace with the actual URL of your text file
-            fetch(fileUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById("fileContent").textContent = data;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        });
-}
-
-
-    
-
-
     </script>
 </body>
 </html>
