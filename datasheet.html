@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Datasheet</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      </head>
+<body>
+
+
+    <div class="jumbotron text-center">
+        <h1>Select datasheet</h1><br>
+        <p>
+            <button id="loadFileButton" class="btn btn-outline-dark" onclick="btn1()">Data1</button>
+            <button id="loadFileButton2" class="btn btn-outline-dark" onclick="btn2()">Data2</button>
+            <button id="loadFileButton3" class="btn btn-outline-dark" onclick="btn3()">Data3</button>
+
+        </p> 
+      </div>
+        
+      <div class="container">
+
+        <pre id="fileContent"></pre>
+      </div>
+      
+
+
+
+
+    <script>
+
+function btn1(){
+    document.getElementById("loadFileButton").addEventListener("click", function () {
+            const fileUrl = 'https://www.w3.org/TR/2003/REC-PNG-20031110/iso_8859-1.txt'; // Replace with the actual URL of your text file
+            fetch(fileUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById("fileContent").textContent = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+}
+function btn2(){
+    document.getElementById("loadFileButton2").addEventListener("click", function () {
+            const fileUrl = 'https://raw.githubusercontent.com/itsfoss/text-files/master/sample_log_file.txt'; // Replace with the actual URL of your text file
+            fetch(fileUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById("fileContent").textContent = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+}
+function btn3(){
+    document.getElementById("loadFileButton3").addEventListener("click", function () {
+            const fileUrl = 'https://raw.githubusercontent.com/itsfoss/text-files/master/agatha_complete.txt'; // Replace with the actual URL of your text file
+            fetch(fileUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById("fileContent").textContent = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+}
+
+
+    
+
+
+    </script>
+</body>
+</html>
