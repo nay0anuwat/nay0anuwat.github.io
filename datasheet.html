@@ -20,6 +20,8 @@
             <button id="loadFileButton3" class="btn btn-outline-dark" onclick="btn_click('data3')">Python</button>
             <button id="loadFileButton4" class="btn btn-outline-dark" onclick="btn_click('data4')">Ionic</button>
             <button id="loadFileButton5" class="btn btn-outline-dark" onclick="btn_click('data5')">Javascript</button>
+            <button id="loadFileButton6" class="btn btn-outline-dark" onclick="btn_click('data6')">Vue</button>
+            <button id="loadFileButton7" class="btn btn-outline-dark" onclick="btn_click('data7')">Other</button>
         </p> 
       </div>
         
@@ -37,13 +39,17 @@ var btn2_name = "loadFileButton2";
 var btn3_name = "loadFileButton3";
 var btn4_name = "loadFileButton4";
 var btn5_name = "loadFileButton5";
-
+var btn6_name = "loadFileButton6";
+var btn7_name = "loadFileButton7";
+        
 //btn path
 var path1 = "https://raw.githubusercontent.com/nay0anuwat/nay0anuwat.github.io/main/Datasheet/aspx.net.txt";
 var path2 = "https://raw.githubusercontent.com/nay0anuwat/nay0anuwat.github.io/main/Datasheet/vb.net.txt";
 var path3 = "https://raw.githubusercontent.com/nay0anuwat/nay0anuwat.github.io/main/Datasheet/python.txt";
 var path4 = "https://raw.githubusercontent.com/nay0anuwat/nay0anuwat.github.io/main/Datasheet/ionic.txt";
 var path5 = "https://raw.githubusercontent.com/nay0anuwat/nay0anuwat.github.io/main/Datasheet/javascript.txt";
+var path6 = "https://raw.githubusercontent.com/nay0anuwat/nay0anuwat.github.io/main/Datasheet/vue.txt";
+var path7 = "https://raw.githubusercontent.com/nay0anuwat/nay0anuwat.github.io/main/Datasheet/other.txt";
 
 
 var x;
@@ -69,6 +75,14 @@ if(data == 'data1'){
 }else if(data == 'data5'){
     x = btn5_name;
     y = path5;
+    load();
+}else if(data == 'data6'){
+    x = btn6_name;
+    y = path6;
+    load();
+}else if(data == 'data7'){
+    x = btn7_name;
+    y = path7;
     load();
 }
 
