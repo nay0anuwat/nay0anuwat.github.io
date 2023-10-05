@@ -1,0 +1,24 @@
+VUE.JS
+
+vue install
+npm install -g @vue/cli
+---------------------------
+vue create (npm run serve)
+vue create _____
+	default vue 3
+----------------------------
+vue create (npm run dev)
+npm init vue@latest
+	router -> Yes
+npm install
+----------------------------
+quasar install
+
+ npm install quasar @quasar/extras
+ npm install -D @quasar/vite-plugin sass@1.32.12
+
+follow -> https://quasar.dev/start/vite-plugin
+
+
+
+
