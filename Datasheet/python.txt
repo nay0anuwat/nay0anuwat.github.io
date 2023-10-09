@@ -1,1 +1,20 @@
 Python
+ATM cmd
+---------------------
+print("1 : read\n2 : write\n0 : exit")
+x = input("select mode ")
+def main():
+    print("1 : read\n2 : write\n0 : exit")
+    x = input("select mode ")
+    if x == "1":
+        with open('py db.txt', 'r') as file:
+            content = file.read()  # Read the entire content of the file
+            print(content)
+    elif x == "2":
+        y = input("write ")
+        with open('py db.txt', 'a') as file:
+            file.write('\n'+y)
+    elif x == "0":
+        quit()
+while x != "0":
+  main()
