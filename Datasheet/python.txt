@@ -52,3 +52,64 @@ for i in new:
 
 #result = pyfiglet.figlet_format("N A Y") 
 #print(result) 
+
+
+-----------------------------------
+import pyfiglet
+import platform
+import wmi
+import subprocess
+import time
+
+result = pyfiglet.figlet_format(" NAY") 
+print(result) 
+x=""
+
+manual =  "1 : read          2 : write  \n3 : new-file      4 : no func          \n5 : info   \n0 : exit"
+
+def create():
+    file = open("myfile.txt", "w")
+    file.write('test')
+    file.close
+
+def info():
+    Id = subprocess.check_output(['systeminfo']).decode('utf-8').split('\n')
+    new = []
+    # arrange the string into clear info
+    for item in Id:
+        new.append(str(item.split("\r")[:-1]))
+    for i in new:
+        print(i[2:-2])
+        time.sleep(0.2)
+
+def decode():
+   with open('md5 db.txt', 'r') as file:
+        content = file.read()  # Read the entire content of the file
+        print(content)
+
+
+
+def main():
+    print(manual)
+    x = input("select mode ")
+    if x == "1":
+        with open('py db.txt', 'r') as file:
+            content = file.read()  # Read the entire content of the file
+            print(content)
+    elif x == "2":
+        y = input("write ")
+        with open('py db.txt', 'a') as file:
+            file.write('\n'+y)
+    elif x == "3":
+        create()
+    elif x == "4":
+        decode
+    elif x == "5":
+        info()
+    elif x == "0":
+        quit()
+
+
+while x != "0":
+  main()
+  print("\n")
