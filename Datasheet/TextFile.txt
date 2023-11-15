@@ -1,7 +1,5 @@
 test text file
-
-
-
+------------------------------
 config.php
 <?php
 $server = "localhost";
