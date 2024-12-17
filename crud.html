@@ -53,6 +53,14 @@ input{
   margin: 5px 0px;
   padding: 8px;
 }
+.container-x {
+            padding: 5px;
+           
+            width: 500px;
+            height: 400px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
 </style>
 
 <body>
@@ -63,53 +71,39 @@ input{
 </div>
 
 
-<div class="container" style="margin-top: 50px;
-	width: 50%; height:auto;">
-<div class="row">
-	<div class="col-sm-6">
-	  <div class="card">
-		<div class="card-body">
-		  <h5 class="card-title">Insert data</h5>
+<div class="container" >
 
-		
-		  <form action="#" id="addForm">
-			<input type="text" class="user-input" data-key="name" placeholder="type name here" id="text1"><br>
+  <div class="row">
+    <div class="col">
+      <h5 >Insert data</h5>
+<form action="#" id="addForm">
+<input type="text" class="user-input" data-key="name" placeholder="type name here" id="text1"><br>
+<input type="text" class="user-input" data-key="data" placeholder="type data here" id="text2"><br>
+<button type="submit" class="btn btn-success">Insert data</button>
+</form>
 
-			<input type="text" class="user-input" data-key="data" placeholder="type data here" id="text2"><br>
-			<button type="submit" class="btn btn-success">Insert data</button>
-		 </form>
-		</div>
-	  </div>
-	</div>
-	<div class="col-sm-6">
-	  <div class="card">
-		<div class="card-body">
-		  <h5 class="card-title">Edit data</h5>
-		 
-		  <form action="#" id="editForm">
-			<input type="hidden" id="edit-userid">
-			<input type="text" class="edit-user-input" data-key="name" placeholder="type name here" ><br>
+    <h5 >Update data</h5>
+    <form action="#" id="editForm">
+    <input type="hidden" id="edit-userid">
+    <input type="text" class="edit-user-input" data-key="name" placeholder="type name here" ><br>
+    <input type="text" class="edit-user-input" data-key="data" placeholder="type data here"><br>
+    <button type="submit" id="saveUser" class="btn btn-warning">Edit data</button>
+  </form>
+    </div>
 
-			<input type="text" class="edit-user-input" data-key="data" placeholder="type data here"><br>
-			<button type="submit" id="saveUser" class="btn btn-warning">Edit data</button>
-		 </form>
-	 
-		</div>
-	  </div>
-	</div>
+      <div class="col">
+        <div class="container-x">
+        <div id="wrapper">
+          <h1>List</h1>
+          <p id="demo"></p>
+          <div id="container"></div>
+          <div id="user-detail" ></div>
+        </div>  
+      </div>
+      </div>
   </div>
-  
-	
-	<div id="wrapper">
-		<h1>Collection Data</h1>
-    <p id="demo"></p>
 
-		<div id="container"></div>
-		<div id="user-detail" ></div>
-	</div>  
-</div>  
-</div>
-
+  </div>
   
 
 <script src=
