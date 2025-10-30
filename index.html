@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-<head>
-  <meta charset="UTF-8" />
-  <title>NAY :) </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css" />
-  <script type='text/javascript' src='./jquery.particleground.js'></script>
-  <script type='text/javascript' src='js/demo.js'></script>
-</head>
 
+<head>
+    <meta charset="UTF-8" />
+    <title>NAY :) </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" />
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <script type='text/javascript' src='./jquery.particleground.js'></script>
+    <script type='text/javascript' src='js/demo.js'></script>
+</head>
 
 <body>
     <div id="particles">
         <div id="intro">
-            <h2>NAY 😎</h2>
+            <h1>NAY 😎</h1>
 
             <div class="container">
                 <br />
@@ -32,7 +41,6 @@
                                             class="form-control form-control-lg form-control-borderless"
                                             data-bs-toggle="dropdown" placeholder="Search topics or keywords">
                                         <ul class="dropdown-menu w-100" id="dropdownList">
-                                            <!-- Options จะถูกสร้างด้วย JS -->
                                         </ul>
                                     </div>
                                 </div>
@@ -55,7 +63,7 @@
 
 
     <script>
-        const items = ["crud", "datasheet", "qrcode"];
+        const items = ["crud", "datasheet", "qrcode","resume"];
         const searchBox = document.getElementById('searchBox');
         const dropdownList = document.getElementById('dropdownList');
 
@@ -89,7 +97,10 @@
 
         function find() {
             let base = "https://nay0anuwat.github.io/"
-            let link = base + document.getElementById("searchBox").value;
+            let link = base + document.getElementById("searchBox").value+".html";
+            if(document.getElementById("searchBox").value == "resume"){
+                  link = 'https://raw.githubusercontent.com/nay0anuwat/nay0anuwat.github.io/refs/heads/main/IMG/resume-2025.png'
+            }
             window.location.href = link;
         }
 
@@ -97,7 +108,11 @@
 
 
     <style>
-  
+        body {
+            background: #000000;
+        }
+
+      
         .form-control-borderless {
             border: none;
         }
