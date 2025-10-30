@@ -31,7 +31,9 @@
                         <div class="card card-sm">
                             <div class="card-body row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <i class="fas fa-search h4 text-body"></i>
+                                    <i class="fas fa-search h4 text-body"  data-bs-toggle="popover" 
+        title="Popover title" 
+        data-bs-content="And here’s some amazing content. It’s very engaging!"></i>
                                 </div>
                                 <!--end of col-->
                                 <div class="col">
@@ -46,21 +48,27 @@
                                 </div>
                                 <!--end of col-->
                                 <div class="col-auto">
+
+                                       <i class="fas fa-x h4 text-body" onclick="x()"></i>
                                     <button class="btn btn btn-success" onclick="find()">Search</button>
                                 </div>
 
                             </div>
-
-                            <!--end of col-->
                         </div>
                     </div>
                 </div>
-                <!--end of col-->
             </div>
         </div>
     </div>
     </div>
 
+
+
+<script>
+  // Initialize all popovers on the page
+  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+  const popoverList = [...popoverTriggerList].map(el => new bootstrap.Popover(el))
+</script>
 
     <script>
         const items = ["crud", "datasheet", "qrcode","resume"];
@@ -77,7 +85,8 @@
                     li.innerHTML = `<button class="dropdown-item" ">${item}</button>`;
                     li.addEventListener('click', () => {
                         searchBox.value = item;
-                        dropdownList.innerHTML = '';
+                      //  dropdownList.innerHTML = "";
+
                     });
                     dropdownList.appendChild(li);
                 });
@@ -95,6 +104,7 @@
             }
         });
 
+    
         function find() {
             let base = "https://nay0anuwat.github.io/"
             let link = base + document.getElementById("searchBox").value+".html";
@@ -104,7 +114,13 @@
             window.location.href = link;
         }
 
+
+        function x() {
+         document.getElementById("searchBox").value = "";
+        }
     </script>
+
+
 
 
     <style>
