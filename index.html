@@ -32,15 +32,14 @@
                             <div class="card-body row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <i class="fas fa-search h4 text-body"  data-bs-toggle="popover" 
-        title="Popover title" 
-        data-bs-content="And here’s some amazing content. It’s very engaging!"></i>
+        title="Topic" 
+        data-bs-content="crud / datasheet / qrcode / resume"></i>
                                 </div>
-                                <!--end of col-->
                                 <div class="col">
 
                                     <div class="dropdown">
                                         <input type="text" id="searchBox"
-                                            class="form-control form-control-lg form-control-borderless"
+                                            class="form-control form-control-md form-control-borderless"
                                             data-bs-toggle="dropdown" placeholder="Search topics or keywords">
                                         <ul class="dropdown-menu w-100" id="dropdownList">
                                         </ul>
@@ -49,9 +48,8 @@
                                 <div class="col-auto">
 
                                        <i class="fas fa-times h4 text-body" onclick="x()"></i>
-                                    <button class="btn btn btn-success" onclick="find()">Search</button>
                                 </div>
-
+                                    <button class="btn btn btn-success" onclick="find()">Search</button>
                             </div>
                         </div>
                     </div>
@@ -64,7 +62,6 @@
 
 
 <script>
-  // Initialize all popovers on the page
   const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
   const popoverList = [...popoverTriggerList].map(el => new bootstrap.Popover(el))
 </script>
@@ -76,7 +73,7 @@
 
         searchBox.addEventListener('input', () => {
             const value = searchBox.value.toLowerCase();
-            dropdownList.innerHTML = ''; // เคลียร์ก่อน
+            dropdownList.innerHTML = '';
             if (value) {
                 const filtered = items.filter(item => item.toLowerCase().includes(value));
                 filtered.forEach(item => {
@@ -94,9 +91,6 @@
                 dropdownList.classList.remove('show');
             }
         });
-
-
-        // ปิด dropdown ถ้าคลิกนอก
         document.addEventListener('click', (e) => {
             if (!searchBox.contains(e.target)) {
                 dropdownList.classList.remove('show');
