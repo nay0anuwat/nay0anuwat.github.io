@@ -67,7 +67,7 @@
 </script>
 
     <script>
-        const items = ["crud", "datasheet", "qrcode","resume"];
+        const items = ["crud", "datasheet", "qrcode","resume","free space"];
         const searchBox = document.getElementById('searchBox');
         const dropdownList = document.getElementById('dropdownList');
 
@@ -105,10 +105,17 @@
                   link = 'https://raw.githubusercontent.com/nay0anuwat/nay0anuwat.github.io/refs/heads/main/IMG/resume-2025.png'
             }
 
-            if(document.getElementById("searchBox").value == "crud"){
+            if(document.getElementById("searchBox").value == "crud" ){
                   link = 'https://script.google.com/macros/s/AKfycbxYwhkKKdBpgkadCS8D7JCxjz6lOt8rruo37iKWt2Y/exec'
             }
             window.location.href = link;
+
+            if(document.getElementById("searchBox").value == "free space" ){
+                  link = 'https://drive.google.com/drive/folders/1ByiZytT1_UJ0bERxx2bHh7GtJHPv8mB2?usp=drive_link'
+            }
+            window.location.href = link;
+
+
         }
 
 
