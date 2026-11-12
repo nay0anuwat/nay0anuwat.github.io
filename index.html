@@ -214,7 +214,7 @@
         <header>
     <h2>กิจกรรม</h2>
     </header>
-  
+  <div class="status" id="storage-info"></div> 
 
     <div class="bottom-actions">
       <span></span>
@@ -324,6 +324,7 @@
 
           todoList.appendChild(item);
         });
+            updateStorageInfo();
       }
 
 
@@ -386,12 +387,31 @@
 
       saveTodos();
       renderTodos();
+      updateStorageInfo();
 
     });
+
+function updateStorageInfo() {
+  let totalBytes = 0;
+
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    const value = localStorage.getItem(key);
+
+    totalBytes += (key.length + value.length) * 2;
+  }
+
+  const mb = totalBytes / (1024 * 1024);
+
+  document.getElementById("storage-info").textContent =
+    `ใช้พื้นที่: ${mb.toFixed(4)} MB`;
+}
 
 
     // เริ่มต้นแสดงข้อมูล
     renderTodos();
+    updateStorageInfo();
+
 
   </script>
 
